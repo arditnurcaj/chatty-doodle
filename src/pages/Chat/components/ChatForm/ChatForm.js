@@ -1,12 +1,14 @@
 import { Input, SendButton } from "../";
 
-import StyledChatForm from "./ChatForm.styles";
+import { StyledChatForm, ChatFormContainer } from "./ChatForm.styles";
 
 const ChatForm = () => {
   return (
     <StyledChatForm>
-      <Input placeholder='Message' />
-      <SendButton>Send</SendButton>
+      <ChatFormContainer>
+        <Input placeholder='Message' />
+        <SendButton>Send</SendButton>
+      </ChatFormContainer>
     </StyledChatForm>
   );
 };
