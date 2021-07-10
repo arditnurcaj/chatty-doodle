@@ -1,7 +1,11 @@
-import StyledMessages from "./Messages.styles";
+import { StyledMessages, MessagesContainer } from "./Messages.styles";
 
 const Messages = () => {
-  return <StyledMessages>Messages</StyledMessages>;
+  return (
+    <StyledMessages>
+      <MessagesContainer>Messages</MessagesContainer>
+    </StyledMessages>
+  );
 };
 
 export default Messages;

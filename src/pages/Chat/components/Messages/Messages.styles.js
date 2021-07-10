@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
-const StyledMessages = styled.div`
+export const StyledMessages = styled.div`
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
 `;
 
-export default StyledMessages;
+export const MessagesContainer = styled.div`
+  max-width: 64rem;
+  padding: 0 2.4rem;
+  width: 100%;
+`;
