@@ -1,15 +1,10 @@
 import styled from "styled-components";
 
-import mediaQueries from "constants/mediaQueries";
-import BreakpointSizes from "constants/breakpointSizes";
-
 const StyledChatForm = styled.div`
   height: 8rem;
   background: #3798d4;
-
-  ${mediaQueries(BreakpointSizes.MD)`
-    height: 13rem;
-  `}
+  display: flex;
+  padding: 0.8rem;
 `;
 
 export default StyledChatForm;
