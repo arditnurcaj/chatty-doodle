@@ -1,10 +1,12 @@
 import GlobalStyles from "globalStyles";
 
+import { Chat } from "pages/Chat";
+
 const App = () => {
   return (
     <>
       <GlobalStyles />
-      <h1>Hello World</h1>
+      <Chat />
     </>
   );
 };
