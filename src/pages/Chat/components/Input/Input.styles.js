@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledInput = styled.input`
-  flex-grow: 1;
+  flex: 1;
   border-radius: 0.5rem;
   border: none;
   caret-color: #2e77a4;
