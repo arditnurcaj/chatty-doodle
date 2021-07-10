@@ -7,7 +7,7 @@ export const StyledChatForm = styled.div`
   justify-content: center;
 `;
 
-export const ChatFormContainer = styled.div`
+export const ChatFormContainer = styled.form`
   display: flex;
   width: 100%;
   padding: 0.8rem 2.4rem;
