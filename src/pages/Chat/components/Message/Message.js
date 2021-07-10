@@ -6,6 +6,8 @@ import {
   MessageAuthor,
 } from "./Message.styles";
 
+import formatTimestamp from "utils/formatTimestamp";
+
 const Message = ({ isSentFromAuthor, message, author, timestamp }) => {
   return (
     <MessageContainer isSentFromAuthor={isSentFromAuthor}>
@@ -15,7 +17,7 @@ const Message = ({ isSentFromAuthor, message, author, timestamp }) => {
           {message || ""}
         </MessageContent>
         <MessageSentDate isSentFromAuthor={isSentFromAuthor}>
-          {timestamp || ""}
+          {(timestamp && formatTimestamp(timestamp)) || ""}
         </MessageSentDate>
       </StyledMessage>
     </MessageContainer>
