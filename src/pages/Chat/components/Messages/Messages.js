@@ -1,9 +1,17 @@
+import { Message } from "../";
+
 import { StyledMessages, MessagesContainer } from "./Messages.styles";
 
 const Messages = () => {
   return (
     <StyledMessages>
-      <MessagesContainer>Messages</MessagesContainer>
+      <MessagesContainer>
+        <Message isSentFromAuthor={true} />
+        <Message isSentFromAuthor={false} />
+        <Message isSentFromAuthor={false} />
+        <Message isSentFromAuthor={false} />
+        <Message isSentFromAuthor={true} />
+      </MessagesContainer>
     </StyledMessages>
   );
 };
