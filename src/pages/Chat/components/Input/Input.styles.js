@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const StyledInput = styled.input`
   flex: 1;
+  min-width: 1px;
   border-radius: 0.5rem;
   border: none;
   caret-color: #2e77a4;

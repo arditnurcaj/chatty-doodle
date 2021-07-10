@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledSendButton = styled.button`
   background: #ff876d;
-  width: 16rem;
+  flex: 0 0 12rem;
   border: none;
   border-radius: 0.5rem;
   color: white;
