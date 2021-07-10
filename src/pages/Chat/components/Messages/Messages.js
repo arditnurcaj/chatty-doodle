@@ -1,8 +1,20 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 import { Message } from "../";
+
+import { fetchMessages } from "redux/chat/chatActions";
 
 import { StyledMessages, MessagesContainer } from "./Messages.styles";
 
 const Messages = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMessages());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <StyledMessages>
       <MessagesContainer>
