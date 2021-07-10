@@ -6,19 +6,16 @@ import {
   MessageAuthor,
 } from "./Message.styles";
 
-const Message = ({ isSentFromAuthor }) => {
+const Message = ({ isSentFromAuthor, message, author, timestamp }) => {
   return (
     <MessageContainer isSentFromAuthor={isSentFromAuthor}>
       <StyledMessage isSentFromAuthor={isSentFromAuthor}>
-        {!isSentFromAuthor && <MessageAuthor>Ardit</MessageAuthor>}
+        {!isSentFromAuthor && <MessageAuthor>{author || ""}</MessageAuthor>}
         <MessageContent isSentFromAuthor={isSentFromAuthor}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-          incidunt facilis pariatur cum expedita praesentium nisi corrupti modi.
-          Illo dicta mollitia deleniti delectus ab quos repellat, soluta vero.
-          Repellat, sunt.
+          {message || ""}
         </MessageContent>
         <MessageSentDate isSentFromAuthor={isSentFromAuthor}>
-          10 Mar 2021
+          {timestamp || ""}
         </MessageSentDate>
       </StyledMessage>
     </MessageContainer>

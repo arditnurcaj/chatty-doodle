@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Message } from "../";
 
@@ -9,6 +9,7 @@ import { StyledMessages, MessagesContainer } from "./Messages.styles";
 
 const Messages = () => {
   const dispatch = useDispatch();
+  const { messages } = useSelector((state) => state.chat);
 
   useEffect(() => {
     dispatch(fetchMessages());
@@ -18,11 +19,16 @@ const Messages = () => {
   return (
     <StyledMessages>
       <MessagesContainer>
-        <Message isSentFromAuthor={true} />
-        <Message isSentFromAuthor={false} />
-        <Message isSentFromAuthor={false} />
-        <Message isSentFromAuthor={false} />
-        <Message isSentFromAuthor={true} />
+        {messages.map((message) => {
+          // Assume sending author is Ardit */
+          return (
+            <Message
+              key={message._id}
+              isSentFromAuthor={message.author.toLowerCase() === "ardit"}
+              {...message}
+            />
+          );
+        })}
       </MessagesContainer>
     </StyledMessages>
   );
