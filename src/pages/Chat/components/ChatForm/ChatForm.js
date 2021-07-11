@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Input, SendButton } from "../";
 
@@ -9,13 +9,15 @@ import { StyledChatForm, ChatFormContainer } from "./ChatForm.styles";
 
 const ChatForm = () => {
   const dispatch = useDispatch();
+  const { isAddingMessage } = useSelector((state) => state.chat);
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     defaultValues: { message: "" },
   });
 
   const onSubmit = (data) => {
     dispatch(addMessage(data.message));
+    reset({ message: "" });
   };
 
   return (
@@ -26,7 +28,9 @@ const ChatForm = () => {
           placeholder='Message'
           {...register("message", { required: true })}
         />
-        <SendButton type='submit'>Send</SendButton>
+        <SendButton readOnly={isAddingMessage} type='submit'>
+          {isAddingMessage ? "Sending..." : "Send"}
+        </SendButton>
       </ChatFormContainer>
     </StyledChatForm>
   );
