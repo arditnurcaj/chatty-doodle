@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledMessages = styled.div`
-  flex-grow: 1;
+  flex: 1;
   display: flex;
   justify-content: center;
   white-space: nowrap;
