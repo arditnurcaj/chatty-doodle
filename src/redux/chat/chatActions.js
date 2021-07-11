@@ -39,7 +39,7 @@ export const addMessageSuccess = () => ({
 });
 
 export const addMessageFailure = () => ({
-  type: ChatActionTypes.FETCH_MESSAGES_FAILURE,
+  type: ChatActionTypes.ADD_MESSAGE_FAILURE,
 });
 
 export const fetchMessages = () => {
