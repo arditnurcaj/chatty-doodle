@@ -9,6 +9,16 @@ const getMessages = () => {
   });
 };
 
+const getRecentMessages = (params) => {
+  return request({
+    method: "GET",
+    params: {
+      token: process.env.REACT_APP_API_TOKEN,
+      ...params,
+    },
+  });
+};
+
 const addMessage = (message) => {
   return request({
     method: "POST",
@@ -24,6 +34,7 @@ const addMessage = (message) => {
 
 const ChatService = {
   getMessages,
+  getRecentMessages,
   addMessage,
 };
 

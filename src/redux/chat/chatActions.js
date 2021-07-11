@@ -17,6 +17,19 @@ export const fetchMessagesFailure = () => ({
   type: ChatActionTypes.FETCH_MESSAGES_FAILURE,
 });
 
+export const fetchRecentMessagesStart = () => ({
+  type: ChatActionTypes.FETCH_RECENT_MESSAGES_START,
+});
+
+export const fetchRecentMessagesSuccess = (recentMessages) => ({
+  type: ChatActionTypes.FETCH_RECENT_MESSAGES_SUCCESS,
+  payload: recentMessages,
+});
+
+export const fetchRecentMessagesFailure = () => ({
+  type: ChatActionTypes.FETCH_RECENT_MESSAGES_FAILURE,
+});
+
 export const addMessageStart = () => ({
   type: ChatActionTypes.ADD_MESSAGE_START,
 });
@@ -39,6 +52,20 @@ export const fetchMessages = () => {
     } catch (error) {
       dispatch(fetchMessagesFailure());
       toast.error("There was an error fetching messages!");
+    }
+  };
+};
+
+export const fetchRecentMessages = (params) => {
+  return async (dispatch) => {
+    dispatch(fetchMessagesStart());
+
+    try {
+      const response = await ChatService.getRecentMessages(params);
+      dispatch(fetchRecentMessagesSuccess(response.data || []));
+    } catch (error) {
+      dispatch(fetchRecentMessagesFailure());
+      toast.error("There was an error fetching recent messages!");
     }
   };
 };

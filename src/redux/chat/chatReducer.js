@@ -3,6 +3,7 @@ import ChatActionTypes from "./chatActionTypes";
 const initialState = {
   messages: [],
   isLoadingMessages: false,
+  isLoadingRecentMessages: false,
   isAddingMessage: false,
 };
 
@@ -16,6 +17,19 @@ const chatReducer = (state = initialState, action) => {
     }
     case ChatActionTypes.FETCH_MESSAGES_FAILURE: {
       return { ...state, isLoadingMessages: false };
+    }
+    case ChatActionTypes.FETCH_RECENT_MESSAGES_START: {
+      return { ...state, isLoadingRecentMessages: true };
+    }
+    case ChatActionTypes.FETCH_RECENT_MESSAGES_SUCCESS: {
+      return {
+        ...state,
+        isLoadingRecentMessages: false,
+        messages: [...state.messages, ...action.payload],
+      };
+    }
+    case ChatActionTypes.FETCH_RECENT_MESSAGES_FAILURE: {
+      return { ...state, isLoadingRecentMessages: false };
     }
     case ChatActionTypes.ADD_MESSAGE_START: {
       return { ...state, isAddingMessage: true };
