@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 import ChatActionTypes from "./chatActionTypes";
 
 import ChatService from "services/api/chat";
@@ -11,9 +13,8 @@ export const fetchMessagesSuccess = (messages) => ({
   payload: messages,
 });
 
-export const fetchMessagesFailure = (error) => ({
+export const fetchMessagesFailure = () => ({
   type: ChatActionTypes.FETCH_MESSAGES_FAILURE,
-  payload: error,
 });
 
 export const addMessageStart = () => ({
@@ -24,9 +25,8 @@ export const addMessageSuccess = () => ({
   type: ChatActionTypes.ADD_MESSAGE_SUCCESS,
 });
 
-export const addMessageFailure = (error) => ({
+export const addMessageFailure = () => ({
   type: ChatActionTypes.FETCH_MESSAGES_FAILURE,
-  payload: error,
 });
 
 export const fetchMessages = () => {
@@ -37,7 +37,8 @@ export const fetchMessages = () => {
       const response = await ChatService.getMessages();
       dispatch(fetchMessagesSuccess(response.data || []));
     } catch (error) {
-      dispatch(fetchMessagesFailure("There was an error fetching messages!"));
+      dispatch(fetchMessagesFailure());
+      toast.error("There was an error fetching messages!");
     }
   };
 };
@@ -51,7 +52,8 @@ export const addMessage = (message) => {
       dispatch(addMessageSuccess());
       dispatch(fetchMessages());
     } catch (error) {
-      dispatch(addMessageFailure("There was an error adding message!"));
+      dispatch(addMessageFailure());
+      toast.error("There was an error adding message!");
     }
   };
 };

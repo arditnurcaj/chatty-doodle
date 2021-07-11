@@ -2,7 +2,6 @@ import ChatActionTypes from "./chatActionTypes";
 
 const initialState = {
   messages: [],
-  error: null,
   isLoadingMessages: false,
   isAddingMessage: false,
 };
@@ -16,7 +15,7 @@ const chatReducer = (state = initialState, action) => {
       return { ...state, isLoadingMessages: false, messages: action.payload };
     }
     case ChatActionTypes.FETCH_MESSAGES_FAILURE: {
-      return { ...state, isLoadingMessages: false, error: action.payload };
+      return { ...state, isLoadingMessages: false };
     }
     case ChatActionTypes.ADD_MESSAGE_START: {
       return { ...state, isAddingMessage: true };
@@ -25,7 +24,7 @@ const chatReducer = (state = initialState, action) => {
       return { ...state, isAddingMessage: false };
     }
     case ChatActionTypes.ADD_MESSAGE_FAILURE: {
-      return { ...state, isAddingMessage: false, error: action.payload };
+      return { ...state, isAddingMessage: false };
     }
     default: {
       return state;

@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import GlobalStyles from "globalStyles";
 
@@ -8,6 +9,15 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
+      <Toaster
+        toastOptions={{
+          style: {
+            padding: "1rem",
+            fontSize: "1.6rem",
+          },
+          position: "top-right",
+        }}
+      />
       <Switch>
         <Route exact path='/' component={Chat} />
       </Switch>
