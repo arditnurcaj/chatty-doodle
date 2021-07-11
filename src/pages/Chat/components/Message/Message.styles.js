@@ -35,6 +35,8 @@ export const StyledMessage = styled.div`
 
 export const MessageContent = styled.p`
   margin: 0.8rem 0.8rem 1.6rem 0.8rem;
+  word-break: break-all;
+  white-space: pre-wrap;
 `;
 
 export const MessageSentDate = styled.span`

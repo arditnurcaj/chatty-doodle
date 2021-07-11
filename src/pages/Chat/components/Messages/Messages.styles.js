@@ -4,7 +4,9 @@ export const StyledMessages = styled.div`
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  overflow: auto;
+  white-space: nowrap;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 export const MessagesContainer = styled.div`
