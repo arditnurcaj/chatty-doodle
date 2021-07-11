@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Message } from "../";
+import { Message, ScrollToBottom } from "../";
 
 import { fetchMessages, fetchRecentMessages } from "redux/chat/chatActions";
 
@@ -38,6 +38,7 @@ const Messages = () => {
             />
           );
         })}
+        <ScrollToBottom />
       </MessagesContainer>
     </StyledMessages>
   );

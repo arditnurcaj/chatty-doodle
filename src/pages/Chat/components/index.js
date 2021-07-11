@@ -3,3 +3,4 @@ export { default as ChatForm } from "./ChatForm/ChatForm";
 export { default as Input } from "./Input/Input";
 export { default as SendButton } from "./SendButton/SendButton";
 export { default as Message } from "./Message/Message";
+export { default as ScrollToBottom } from "./ScrollToBottom/ScrollToBottom";
