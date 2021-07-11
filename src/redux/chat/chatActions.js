@@ -42,6 +42,11 @@ export const addMessageFailure = () => ({
   type: ChatActionTypes.ADD_MESSAGE_FAILURE,
 });
 
+export const setHasFetchedMessages = (hasFetchedMessages) => ({
+  type: ChatActionTypes.SET_HAS_FETCHED_MESSAGES,
+  payload: hasFetchedMessages,
+});
+
 export const fetchMessages = () => {
   return async (dispatch) => {
     dispatch(fetchMessagesStart());

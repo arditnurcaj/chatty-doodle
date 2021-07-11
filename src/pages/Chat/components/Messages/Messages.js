@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Message, ScrollToBottom } from "../";
 
-import { fetchMessages, fetchRecentMessages } from "redux/chat/chatActions";
+import {
+  fetchMessages,
+  fetchRecentMessages,
+  setHasFetchedMessages,
+} from "redux/chat/chatActions";
 
 import useInterval from "hooks/useInterval";
 
@@ -11,12 +15,19 @@ import { StyledMessages, MessagesContainer } from "./Messages.styles";
 
 const Messages = () => {
   const dispatch = useDispatch();
-  const { messages } = useSelector((state) => state.chat);
+  const { messages, hasFetchedMessages } = useSelector((state) => state.chat);
 
   useEffect(() => {
     dispatch(fetchMessages());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (hasFetchedMessages) {
+      dispatch(setHasFetchedMessages(false));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasFetchedMessages]);
 
   useInterval(() => {
     if (messages.length > 0) {
@@ -38,7 +49,7 @@ const Messages = () => {
             />
           );
         })}
-        <ScrollToBottom />
+        <ScrollToBottom changes={hasFetchedMessages} />
       </MessagesContainer>
     </StyledMessages>
   );

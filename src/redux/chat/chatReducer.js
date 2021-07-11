@@ -5,6 +5,7 @@ const initialState = {
   isLoadingMessages: false,
   isLoadingRecentMessages: false,
   isAddingMessage: false,
+  hasFetchedMessages: false,
 };
 
 const chatReducer = (state = initialState, action) => {
@@ -13,7 +14,12 @@ const chatReducer = (state = initialState, action) => {
       return { ...state, isLoadingMessages: true };
     }
     case ChatActionTypes.FETCH_MESSAGES_SUCCESS: {
-      return { ...state, isLoadingMessages: false, messages: action.payload };
+      return {
+        ...state,
+        isLoadingMessages: false,
+        messages: action.payload,
+        hasFetchedMessages: true,
+      };
     }
     case ChatActionTypes.FETCH_MESSAGES_FAILURE: {
       return { ...state, isLoadingMessages: false };
@@ -39,6 +45,9 @@ const chatReducer = (state = initialState, action) => {
     }
     case ChatActionTypes.ADD_MESSAGE_FAILURE: {
       return { ...state, isAddingMessage: false };
+    }
+    case ChatActionTypes.SET_HAS_FETCHED_MESSAGES: {
+      return { ...state, hasFetchedMessages: action.payload };
     }
     default: {
       return state;
