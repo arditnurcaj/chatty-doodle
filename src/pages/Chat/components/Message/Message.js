@@ -12,7 +12,11 @@ const Message = ({ isSentFromAuthor, message, author, timestamp }) => {
   return (
     <MessageContainer isSentFromAuthor={isSentFromAuthor}>
       <StyledMessage isSentFromAuthor={isSentFromAuthor}>
-        {!isSentFromAuthor && <MessageAuthor>{author || ""}</MessageAuthor>}
+        {!isSentFromAuthor && (
+          <MessageAuthor data-testid='message-author'>
+            {author || ""}
+          </MessageAuthor>
+        )}
         <MessageContent isSentFromAuthor={isSentFromAuthor}>
           {message || ""}
         </MessageContent>
